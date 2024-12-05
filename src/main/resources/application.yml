@@ -1,0 +1,15 @@
+server:
+  port: 8080
+
+shop2:
+  discount-policies:
+    quantity:
+      firstQuantityThreshold: 10
+      firstAmountBasedDiscount: 5.00
+      secondQuantityThreshold: 20
+      secondAmountBasedDiscount: 15.00
+    percentage:
+      firstPercentageThreshold: 10
+      firstPercentageBasedDiscount: 0.10
+      secondPercentageThreshold: 20
+      secondPercentageBasedDiscount: 0.20

@@ -1,6 +1,5 @@
 package com.example.shippingPlatform.domain;
 
-
 public record Amount(int value) {
     public Amount {
         if (value < 1 || value > 250) {

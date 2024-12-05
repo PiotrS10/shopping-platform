@@ -1,11 +1,10 @@
 package com.example.shippingPlatform.domain.policy;
 
-
 import com.example.shippingPlatform.domain.Amount;
 
 import java.math.BigDecimal;
 
-public record PercentageDiscountPolicy (
+public record PercentageDiscountPolicy(
         int firstPercentageThreshold,
         BigDecimal firstPercentageBasedDiscount,
         int secondPercentageThreshold,

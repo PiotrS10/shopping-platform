@@ -1,6 +1,5 @@
 package com.example.shippingPlatform.domain;
 
-
 import com.example.shippingPlatform.domain.policy.DefaultPolicy;
 import com.example.shippingPlatform.domain.policy.DiscountPolicy;
 import com.example.shippingPlatform.infrastructure.model.Product;

@@ -1,6 +1,5 @@
 package com.example.shippingPlatform.domain.policy;
 
-
 import com.example.shippingPlatform.domain.Amount;
 
 import java.math.BigDecimal;
