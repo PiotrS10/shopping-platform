@@ -16,9 +16,9 @@ public class Calculations {
     private final PolicyCatalog discountPolicyCatalog;
     private final Discounts discounts;
 
-    public Calculations(ProductRepository productRepository, PolicyCatalog discountPolicyCatalog, Discounts discounts) {
+    public Calculations(ProductRepository productRepository, PolicyCatalog policyCatalog, Discounts discounts) {
         this.productRepository = productRepository;
-        this.discountPolicyCatalog = discountPolicyCatalog;
+        this.discountPolicyCatalog = policyCatalog;
         this.discounts = discounts;
     }
 

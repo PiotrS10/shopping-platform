@@ -5,7 +5,6 @@ import com.example.shippingPlatform.application.Calculations;
 import com.example.shippingPlatform.domain.Amount;
 import com.example.shippingPlatform.domain.PolicyId;
 import com.example.shippingPlatform.domain.ProductId;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,19 +19,20 @@ import java.util.Optional;
 public class CalculationController {
     private final Calculations calculations;
 
-    @Autowired
     public CalculationController(Calculations calculations) {
         this.calculations = calculations;
     }
 
     @PostMapping
     public ResponseEntity<CalculatedPriceResponse> calculatePrice(@RequestBody CalculatedPriceRequest request) {
-        BigDecimal result = request.products().stream()
+        PolicyId policyId = Optional.ofNullable(request.policyId()).map(PolicyId::of).orElse(null);
+
+        BigDecimal result = request.productLines().stream()
                 .map(product ->
                         calculations.calculatePriceFor(
-                                ProductId.of(product.id()),
+                                ProductId.of(product.productId()),
                                 Amount.of(product.amount()),
-                                Optional.ofNullable(request.policyId()).map(PolicyId::of).orElse(null)
+                                policyId
                         )
                 )
                 .reduce(BigDecimal.ZERO, BigDecimal::add);

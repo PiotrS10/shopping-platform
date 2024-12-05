@@ -1,4 +1,4 @@
 package com.example.shippingPlatform.infrastructure.inbound;
 
-public record Product(String id, int amount) {
+public record ProductLine(String productId, int amount) {
 }
