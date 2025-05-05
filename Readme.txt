@@ -2,7 +2,7 @@ I assume that:
 - I am building a global application.
 - configurability of policies is about allowing value changes, rather than changing parameters within the policy itself.
 - one policy will be used for one request.
-- request to calculate the price will include quantities, product IDs, and the policy ID(opcjonalna -brak id polisy wywoła założono polisę defaultową).
+- request to calculate the price will include quantities, product IDs, and the policy ID.
 - only one policy can be applied at a time.
 - calculation endpoint will be hit when the shopping cart is being summed up —just before the payment step. This scope does not include the calculation of current prices displayed on the UI.
 - policy is triggered when a certain quantity of the same product is reached, and the discount is applied only to that product multiplied by its quantity in the cart in the case of a percentage-based policy. In the case of quantity-based policies, the price is calculated as a value that reduces the amount in the cart.
@@ -20,3 +20,22 @@ If there are problems with deserialization of even one UUID, the entire request/
 Due to the fact that the application will need to be highly efficient (as price calculation is a step in many business processes), I assume that:
 The application's deployment architecture will account for high traffic, including resource reservations in the cluster and scalability options.
 Logging, metrics, and alerting will be implemented using appropriate tools such as Grafana, PagerDuty, and ElasticSearch.
+
+Sample payload for sending a request to http://localhost:8080/api/calculate
+{
+    "productLines": [
+      {
+        "productId": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+        "amount": 10
+      },
+      {
+        "productId": "e6342d0e-5457-4977-a6de-4c7f74ef9f2d",
+        "amount": 5
+      },
+            {
+        "productId": "7e3c6ff1-12ae-4cb2-98e0-d42a4f60617f",
+        "amount": 9
+      }
+    ],
+  "policyId": "f47ac10b-58cc-4372-a567-0e02b2c3d471"
+}
